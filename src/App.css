@@ -1,46 +1,187 @@
-.App {
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app-container {
+  width: 100vw;
   min-height: 100vh;
-  text-align: center;
+  background-color: beige;
   display: flex;
   flex-direction: column;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1rem;
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 2rem;
 }
 
-.App-header {
-  background-color: #282c34;
+.btn {
+  background-color: #111827;
+  border: 1px solid transparent;
+  border-radius: 0.75rem;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  padding: 0.75rem 1.2rem;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #374151;
+}
+
+.layout {
+  display: flex;
+  background-color: #e0dede;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.layout__left {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.layout__right {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  border: 1px solid #ccc;
+}
+
+.character {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.character h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.section__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.section__flex {
+  display: flex;
+  gap: 1rem;
+}
+
+.section__flex--row {
+  flex-direction: row;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #2F0743, #41295a);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  padding: 0.25rem;
+  color: #fff;
+}
+
+.counter__btn {
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  color: #fff;
+}
+
+.counter__btn--minus {
+  background-color: #E63946;
+}
+
+.counter__btn--plus {
+  background-color: #2A9D8F;
+}
+
+.counter__btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.counter__stats {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  margin: 0 0.25rem;
+  padding: 0.25rem 0.5rem;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-section {
-  flex: 1 1 0;
-  background-color: hsl(220deg 13% 13%);
-  color: white;
+.counter__title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
 }
 
-.App-link {
-  color: #61dafb;
+.counter__desc {
+  font-size: 0.75rem;
+  opacity: 0.85;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.class-btn {
+  margin: 0.25rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.class-btn--met {
+  background-color: #cfc;
+  border: 1px solid #090;
+}
+
+.party-check__result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.requirements {
+  border: 2px solid #333;
+  padding: 1rem;
+  margin: 1rem 0;
 }
