@@ -6,6 +6,7 @@ import {
   getAttributesSum,
   getTotalSkillPoints,
   getSpentSkillPoints,
+  getAbilityModifier,
 } from './utils';
 import { ATTRIBUTE_LIST, CLASS_LIST, MAX_ATTRIBUTE_SUM } from './consts';
 import CharacterCard from './components/CharacterCard';
@@ -45,12 +46,25 @@ function App() {
 
     const currentValue = character.attributes[attr];
     const newValue = currentValue + delta;
-    if (newValue < 0) return;
+    if (newValue < 0) return alert('Attribute cannot be less than 0');
 
     const oldSum = getAttributesSum(character);
     const newSum = oldSum + delta;
-    if (newSum > MAX_ATTRIBUTE_SUM) return;
+    if (newSum > MAX_ATTRIBUTE_SUM) return alert('Attributes sum is maxed out');
 
+    if (attr === 'Intelligence') {
+      const newIntMod = getAbilityModifier(newValue);
+      const newTotalSkillPoints = 10 + 4 * newIntMod;
+      const spent = getSpentSkillPoints(character);
+
+      if (spent > newTotalSkillPoints) {
+        return alert(
+          `You have spent ${spent} skill points, but lowering Intelligence to ${newValue} ` +
+            `would only allow ${newTotalSkillPoints} total. ` +
+            `Please remove some skill points before lowering Intelligence further.`
+        );
+      }
+    }
     updateCharacter(charId, {
       attributes: {
         ...character.attributes,
@@ -69,12 +83,12 @@ function App() {
 
     const oldValue = character.skills[skillName];
     const newValue = oldValue + delta;
-    if (newValue < 0) return;
+    if (newValue < 0) return alert('Skill cannot be less than 0');
 
     const totalPoints = getTotalSkillPoints(character);
     const spent = getSpentSkillPoints(character);
     if (delta > 0 && spent + delta > totalPoints) {
-      return;
+      return alert('Cannot spend more skill points than total');
     }
 
     updateCharacter(charId, {
